@@ -1,0 +1,30 @@
+//题目：搜索插入位置
+//给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+//用2分法实现
+class Solution {
+public:
+	int searchInsert(vector<int>& nums, int target) {
+		int n = nums.size();
+		int left = 0;
+		int right = n - 1;
+		while (left <= right)//==时也满足
+		{
+			int middle = (left + right) / 2;
+			if (target<nums[middle])
+			{
+				right = middle - 1;
+			}
+			else if (target>nums[middle])
+			{
+				left = middle + 1;
+			}
+			else
+			{
+				return middle;
+			}
+		}
+		return right + 1;
+	}
+};
+//时间复杂度：O(logn)
+//时间复杂度：O(1)
